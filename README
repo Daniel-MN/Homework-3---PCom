@@ -1,0 +1,55 @@
+Mușuroi Daniel-Nicușor                        
+                        Tema 3 - PCom
+
+    Tema este realizata folosind scheletul de la laborator, astfel ca am 
+pastrat buffer.c, buffer.h, helper.c, helpers.h si requests.c, reguests.h
+modificate. Am ales Parson pentru parsarea raspunsurilor de la server.
+    Catre server sunt trimise mesaje de tip application/json.
+
+    register:
+    Trimite catre server datele de inregistrare si afiseaza un mesaj de 
+eroare in cazul in care username-ul deja exista.
+
+    login:
+    Trimite catre server o cerere de login cu un username sau o parola, 
+salveaza un cookie ce reprezinta connect.sid in cazul in care credentialele
+sunt corecte sau intoarce un mesaj de eroare in caz contrar.
+    De asemenea, se verifica daca utilizatorul este dejalogat si in caz 
+afirmativ, acesta este intrebat daca doreste sa se reconecteze sau sa ramana
+conectat cu contul vechi.
+
+    enter_library:
+    Trimite catre server o cerere de acces la library. In cazul in care totul
+este in regula (utilizatorul este logat, ...) se retine un token JWT. Daca 
+utilizatorul nu este logat se intoarce un mesaj de eroare.
+
+    get_books:
+    Trimite o cerere catre server folosind tokenul JWT si cookie-ul specific 
+utilizatorului. In cazul in care acesta nu are acces la library, se intoarce 
+un mesaj de eroare. Daca totul este in regula, se intoarce o lista de titluri
+de carti si de id-uri corespunzatoare care este afisata.
+
+    get_book:
+    Trimite o cerere catre server folosind tokenul JWT si cookie-ul specific
+utilizatorului. In cazul in care acesta nu are acces la library sau daca cartea
+cu id-ul specificat nu exista in library, se intoarce un mesaj de eroare. Daca
+totul este in regula, se afiseaza detaliile despre carte(titlu, autor, publisher,
+ gen, numarul de pagini).
+    
+    add_book
+    Trimite o cerere catre server cu detaliile carti, tokenul JWT si cookie-ul 
+specific utilizatorului. In cazul in care utlizatorul nu are acces la library
+se intoarce un mesaj de eroare. 
+
+    delete_book
+    Trimite o cerere catre server. Daca cartea cu id-ul specificat nu exista, 
+se intoarce un mesaj de eroare. Daca utilizatorul nu are acces la library, se 
+intoarce, de asemenea, un mesaj de eroare specific.
+
+    logout:
+    Se sterg cookiurile specifice utilizatorului si tokenul JWT, in cazul in 
+care exista.
+
+    In cazul in care utilizatorul introduce o comanda necunoscuta, alta inafara
+de cele de mai sus, atunci se afiseaza un mesaj prin care i se cere sa 
+introduca doar comenzile date.
